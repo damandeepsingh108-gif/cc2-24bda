@@ -1,0 +1,37 @@
+class Queue
+{
+private:
+    stack<int> input;
+    stack<int> output;
+
+public:
+    void push(int x)
+    {
+        input.push(x);
+    }
+
+    void pop()
+    {
+        peek();
+        output.pop();
+    }
+
+    int peek()
+    {
+        if (output.empty())
+        {
+            while (!input.empty())
+            {
+                output.push(input.top());
+                input.pop();
+            }
+        }
+
+        return output.top();
+    }
+
+    bool empty()
+    {
+        return input.empty() && output.empty();
+    }
+};
